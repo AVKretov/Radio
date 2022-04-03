@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RadioTest {
 
+
     @Test
     void setStationUnderLimit() {
         Radio radio = new Radio();
@@ -102,7 +103,21 @@ class RadioTest {
     @Test
     void setVolumeOverLimit() {
         Radio radio = new Radio();
-        radio.setVolume(11);
+        radio.setVolume(101);
         assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    void setQuantityOfStationBelowLimit() {
+        Radio radio = new Radio();
+        radio.setQantityOfStations(0);
+        assertEquals(1, radio.getQantityOfStation());
+    }
+
+    @Test
+    void setQuantityOfStationOverLimit() {
+        Radio radio = new Radio(999);
+        radio.setQantityOfStations(5000);
+        assertEquals(999, radio.getQantityOfStation());
     }
 }
